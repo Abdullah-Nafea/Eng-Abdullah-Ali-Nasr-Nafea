@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Mirza:wght@400;500;600;700&family=Nosifer&family=Noto+Color+Emoji&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Gemstones&family=Rubik+Microbe&family=Ruwudu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="photo/gulfpicasso-b0d6088_1.png" type="imge/x-icon" rel="icon"/>
     <!--from body-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -202,25 +203,28 @@
             </div>
           </section>
           <script>
-              document.getElementById('whatsappForm').addEventListener('submit'), function(e) {
-                  e.preventDefault();
-                  let phoneNumber = '201129083444';
-                  let name = document.getElementById('name').value;
-                  let email = document.getElementById('email').value;
-                  let project = document.getElementById('project').value;
-                  let message = document.getElementById('message').value;
-                  let whatsappMessage = `*طلب استشارة جديد من الموقع* %0A%0A` +
-                      `*الاسم:* ${name}%0A` +
-                      `*الإيميل:* ${email}%0A` +
-                      `*نوع المشروع:* ${project}%0A` +
-                      `*تفاصيل المشروع:*%0A${message}`;
-                let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
-                window.open(whatsappURL, '_blank');
-
-              }
+            document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+              
+              // غير الرقم ده لرقمك انت بصيغة الدولة بدون + أو 00
+              let phoneNumber = '201001234567';
+              
+              let name = document.getElementById('name').value;
+              let email = document.getElementById('email').value;
+              let project = document.getElementById('project').value;
+              let message = document.getElementById('message').value;
+              
+              let whatsappMessage = `*طلب استشارة جديد من الموقع* %0A%0A` +
+                                    `*الاسم:* ${name}%0A` +
+                                    `*الإيميل:* ${email}%0A` +
+                                    `*نوع المشروع:* ${project}%0A` +
+                                    `*تفاصيل المشروع:*%0A${message}`;
+              
+              let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+              
+              window.open(whatsappURL, '_blank');
+            });
           </script>
-        
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
