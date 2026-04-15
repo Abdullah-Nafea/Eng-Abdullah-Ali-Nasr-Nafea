@@ -147,7 +147,7 @@
         
             <div class="contact-grid">
               <div class="contact-form">
-                <form id="whatsappFrom">
+                <form id="whatsappForm">
                   <div class="form-group">
                     <label for="name">الاسم بالكامل</label>
                     <input type="text" id="name" name="name" required>
@@ -229,24 +229,43 @@
     <script>
         AOS.init();
       </script>
-
       <script>
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          const headerOffset = 0; // صفر عشان معندكش هيدر ثابت
-          const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+        document.addEventListener('DOMContentLoaded', function() {
+          
+          const whatsappForm = document.getElementById('whatsappForm');
+          
+          if (whatsappForm) {
+            whatsappForm.addEventListener('submit', function(e) {
+              e.preventDefault();
+              
+              // 1. غير الرقم ده لرقمك انت بصيغة الدولة كاملة
+              let phoneNumber = '201001234567'; 
+              
+              let name = document.getElementById('name').value;
+              let email = document.getElementById('email').value;
+              let project = document.getElementById('project').value;
+              let message = document.getElementById('message').value;
+              
+              // 2. نتأكد إن الحقول مش فاضية
+              if (!name || !email || !project || !message) {
+                alert('من فضلك املا كل البيانات');
+                return;
+              }
+              
+              let whatsappMessage = `*طلب استشارة جديد من الموقع*%0A%0A` +
+                                    `*الاسم:* ${name}%0A` +
+                                    `*الإيميل:* ${email}%0A` +
+                                    `*نوع المشروع:* ${project}%0A` +
+                                    `*تفاصيل المشروع:*%0A${message}`;
+              
+              let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+              
+              // 3. نفتح الواتساب
+              window.open(whatsappURL, '_blank');
+            });
+          }
+          
         });
-      });
-    </script>
-
-      
+      </script>        
 </body>
 </html>
