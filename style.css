@@ -191,7 +191,7 @@ header span {
     color: var(--text);
     line-height: 1.8;
   }
-  .container {
+  #about {
     max-width: 1100px;
     margin: 0 auto;
     padding: 80px 20px;
@@ -311,7 +311,7 @@ body {
   color: var(--text);
   line-height: 1.8;
 }
-.container {
+#contact {
   max-width: 1100px;
   margin: 0 auto;
   padding: 80px 20px;
