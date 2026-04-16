@@ -24,13 +24,14 @@
     <section id="home">
         <header>
             <a href="#" class="logo"><span>N</span>AFEA</a>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact<i class="fa-solid fa-angle-down"></i></a></li>
             </ul>
+            <div class="menu-btn">☰</div>
         </header>
         <div class="container1">
             <div class="text">
@@ -74,7 +75,7 @@
     <section id="services">
         <div class="txx">
             <h1>Services</h1>
-        </div><br><br><br><br>
+        </div>
         <div class="ser1">
             <div data-aos="fade-up" data-aos-duration="900">
                 <h1><i class="fa-solid fa-hotel"></i>تصميم معماري</h1>
@@ -84,7 +85,7 @@
                 <h1><i class="fa-brands fa-keycdn"></i>تصميم داخلي</h1>
                 <p><b>تخطيط وتصميم المساحات الداخلية للمباني، بهدف تحسين الوظيفة، الجمال، والسلامة، بما يتناسب مع احتياجات المستخدمين</b></p>
             </div>
-        </div><br><br><br><br><br>
+        </div>
         <div class="ser2">
             <div data-aos="fade-up" data-aos-duration="900">
                 <h1><i class="fa-solid fa-gear"></i>إدارة مشاريع</h1>
@@ -92,7 +93,7 @@
             </div> 
             <div data-aos="fade-up" data-aos-duration="900">
                 <h1><i class="fa-solid fa-helmet-safety"></i>استشارات معمارية</h1>
-                <p><b>خدمات مهنية متخصصة يقدمها مهندسون وخبراء لتخطيط، تصميم، وإدارة مشاريع البناء (سكنية، تجارية، أو صناعية) لضمان تحقيق الجمال والوظيفية تشمل الخدمات التصميم، الرسومات الهندسية، الإشراف على التنفيذ، وإعادة تأهيل المباني، مما يضمن كفاءة المشروع وتوافقه مع المعايير الفنية واللوائح</b></p>
+                <p><b>خدمات مهنية متخصصة يقدمها مهندسون وخبراء لتخطيط، تصميم، وإدارة مشاريع البناء (سكنية، تجارية، أو صناعية) لضمان تحقيق الجمال والوظيفية</b></p>
             </div>
         </div>
     </section><br><br>
@@ -266,6 +267,66 @@
           }
           
         });
-      </script>        
+      </script>  
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  
+  menuBtn.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '60px';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'translate';
+    navLinks.style.width = '50%';
+    navLinks.style.padding = '10px';
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.stat-item h3');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const fullText = counter.innerText; // "150+ مشروع"
+  
+          // 1. طلع الرقم بس من النص
+          const target = parseInt(fullText.match(/\d+/)[0]); // هيطلع 150
+  
+          // 2. طلع باقي الكلام من غير الرقم
+          const suffix = fullText.replace(/\d+/g, '0'); // هيبقى "0+ مشروع"
+  
+          let current = 0;
+          const duration = 2000;
+          const increment = target / (duration / 20);
+  
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              // 3. رجع الرقم النهائي + الكلام
+              counter.innerText = fullText.replace(/\d+/, target.toLocaleString());
+              clearInterval(timer);
+            } else {
+              // 4. حدث الرقم بس وخلي الكلام زي ما هو
+              counter.innerText = fullText.replace(/\d+/, Math.floor(current).toLocaleString());
+            }
+          }, 20);
+  
+          observer.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+  
+    counters.forEach(counter => observer.observe(counter));
+  });
+  </script>
+  
+  
+  
+
 </body>
 </html>
