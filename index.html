@@ -464,34 +464,6 @@
       }
       .whatsapp-text { display: none !important; }
     }
-    </style>
-
-<script>
-  // استنى لحد ما الصفحة تحمل
-  document.addEventListener('DOMContentLoaded', function() {
-      
-      // هات كل لينكات الـ Navbar اللي فيها #
-      const navLinks = document.querySelectorAll('nav a[href^="#"]');
-      
-      navLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-              e.preventDefault(); // امنع القفزة العادية
-              
-              const sectionId = this.getAttribute('href'); // #portfolio
-              const section = document.querySelector(sectionId);
-              
-              if (section) {
-                  section.scrollIntoView({
-                      behavior: 'smooth', // ينزل بسلاسة
-                      block: 'start'      // لأول الـ section
-                  });
-              }
-          });
-      });
-      
-  });
-  </script>
-  
-    
+    </style>   
 </body>
 </html>
