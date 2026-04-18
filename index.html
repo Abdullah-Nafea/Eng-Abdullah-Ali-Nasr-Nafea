@@ -27,7 +27,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Eng/ Abdullah Ali" />
   <meta property="og:description" content="تصميم وإشراف هندسي للمشاريع السكنية والتجارية في مصر. خبرة +15 سنة" />
-  <meta property="og:image" content="photo/background.png" />
+  <meta property="og:image" content="https://abdullah-nafea.github.io/Eng-Abdullah-Ali-Nasr-Nafea/photo/cover.jpeg" />
   <meta property="og:url" content="https://abdullah-nafea.github.io/Eng-Abdullah-Ali-Nasr-Nafea/" />
   <meta property="og:type" content="website" />
 
@@ -464,6 +464,33 @@
       .whatsapp-text { display: none !important; }
     }
     </style>
+
+<script>
+  // استنى لحد ما الصفحة تحمل
+  document.addEventListener('DOMContentLoaded', function() {
+      
+      // هات كل لينكات الـ Navbar اللي فيها #
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      
+      navLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault(); // امنع القفزة العادية
+              
+              const sectionId = this.getAttribute('href'); // #portfolio
+              const section = document.querySelector(sectionId);
+              
+              if (section) {
+                  section.scrollIntoView({
+                      behavior: 'smooth', // ينزل بسلاسة
+                      block: 'start'      // لأول الـ section
+                  });
+              }
+          });
+      });
+      
+  });
+  </script>
+  
     
 </body>
 </html>
