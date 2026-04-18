@@ -138,6 +138,15 @@ header span {
 #portfolio button:hover {
     background-color: rgba(55, 176, 224, 0.459);
 }
+.carousel-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+.carousel-prev, .carousel-next, .carousel-counter {
+    display: none;
+}
 /*three page*/
 #services {
     height: 100vh;
@@ -535,7 +544,8 @@ body {
 .imge img {
     width: 300px;
     margin-top: 0;
-    transform: translate(60px, -50px);
+    transform: translate(-85px, -85px);
+    position: absolute;
 }
 
 #portfolio .txt h1 {
@@ -633,5 +643,121 @@ body {
     width: 100%; /* الزراير تاخد العرض كله */
     margin-bottom: 10px;
   }
+  .carousel-prev, .carousel-next, .carousel-counter {
+    display: block;
+}
+}
+
+
+@media (max-width: 768px)  {
+  .portfolio-carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px; /* مساحة للزراير */
+  }
+  .carousel-prev, .carousel-next, .carousel-counter {
+    display: block;
+}
+  .carousel-container {
+    overflow: hidden;
+  }
+  
+  .carousel-group {
+    display: none;
+    grid-template-columns: repeat(3, 1fr); /* 3 صور جنب بعض */
+    gap: 20px;
+    animation: fadeIn 0.5s;
+  }
+  
+  .carousel-group.active {
+    display: grid;
+  }
+  
+  /* لو عايز 4 صور بدل 3 غير السطر اللي فوق خليه repeat(4, 1fr) */
+  
+  .portfolio-item {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+  
+  .portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  
+  .portfolio-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .portfolio-item h4 {
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #1E3A8A;
+  }
+  
+  /* الزراير */
+  .carousel-prev,.carousel-next {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: #1E3A8A;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+  }
+  
+  .carousel-prev:hover,.carousel-next:hover {
+    background: #f1c40f;
+    color: #000;
+  }
+  
+  .carousel-prev { right: 0; } /* عربي */
+  .carousel-next { left: 0; }
+  
+  .carousel-counter {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  /* تابلت: صورتين بس */
+  @media (max-width: 992px) {
+  .carousel-group.active { grid-template-columns: repeat(2, 1fr); }
+  .carousel-prev, .carousel-next, .carousel-counter {
+    display: block;
+}  
+}
+  
+  /* موبايل: صورة واحدة */
+  @media (max-width: 576px) {
+  .portfolio-carousel { padding: 0 50px; }
+  .carousel-group.active { grid-template-columns: 1fr; }
+  .portfolio-item img { height: 250px; }
+  .carousel-prev, .carousel-next, .carousel-counter {
+    display: block;
+}
+}
+  
 }
 
